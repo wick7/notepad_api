@@ -1,0 +1,19 @@
+{
+  "name": "stch_api",
+  "version": "1.0.0",
+  "description": "Note Pad API",
+  "main": "index.js",
+  "author": "Craig Wickersham",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon server.js -w server"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  },
+  "engines" : { "node" : "12.14.1" }
+}
