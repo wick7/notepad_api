@@ -17,13 +17,11 @@ let notesDB = {};
 notesDB.all = () => {
 
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM notes ORDER BY id DESC', [], (err, results) => {
-            try {
-                resolve(results, { message: 'Successfully retrieved all notes!' })
-            }
-            catch (e) {
+        pool.query('SELECT * FROM notes ORDER BY updated_at DESC', [], (err, results) => {
+            if (err) {
                 reject(err, { message: 'Unable to retrieve all notes!' })
             }
+            return resolve(results, { message: 'Successfully retrieved all notes!' })
         });
     })
 };
