@@ -14,7 +14,7 @@ const pool = mysql.createPool({
 let notesDB = {};
 
 //GET - Get ALL NOTES
-//?limit=20&start=0&order=desc
+///notes?limit=20&start=0&order=desc
 notesDB.all = (limit, start, order) => {
 
     let limitBy = limit ? parseInt(limit) : 184467440737
@@ -33,6 +33,7 @@ notesDB.all = (limit, start, order) => {
 };
 
 //GET - Get Note by Id
+//notes/:id
 notesDB.one = (id) => {
 
     return new Promise((resolve, reject) => {
@@ -46,6 +47,7 @@ notesDB.one = (id) => {
 };
 
 //POST - Create a new Note
+///create/
 //body 
 // {
 //     "text": 'A Note'
@@ -63,6 +65,7 @@ notesDB.create = (body) => {
 };
 
 //PUT - Update Exisiting Note
+///update/:id
 //body
 // {
 //     "text": 'A Note'
@@ -80,6 +83,7 @@ notesDB.update = (id, body) => {
 };
 
 //DELETE - Delete Exisiting Note
+///delete/:id
 notesDB.delete = (id) => {
     let noteId = parseInt(id)
     return new Promise((resolve, reject) => {
