@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-app.use('/api', apiRoutes)
+app.use('/notes', apiRoutes)
 
 app.listen(process.env.PORT || '3001', () => {
     console.log(`Server is running on port: ${process.env.PORT || '3001'}`);

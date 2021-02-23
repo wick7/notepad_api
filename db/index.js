@@ -14,10 +14,16 @@ const pool = mysql.createPool({
 let notesDB = {};
 
 //GET - Get ALL NOTES
-notesDB.all = () => {
+//?limit=20&start=0&order=desc
+notesDB.all = (limit, start, order) => {
+
+    let limitBy = limit ? parseInt(limit) : 184467440737
+    let startWith = start ? parseInt(start) : 0
+    let orderBy = order === 'asc' ? 'SELECT * FROM notes ORDER BY updated_at ASC' : 'SELECT * FROM notes ORDER BY updated_at DESC'
 
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM notes ORDER BY updated_at DESC', [], (err, results) => {
+
+        pool.query(orderBy + ' LIMIT ?,?', [startWith, limitBy], (err, results) => {
             if (err) {
                 reject(err, { message: 'Unable to retrieve all notes!' })
             }
